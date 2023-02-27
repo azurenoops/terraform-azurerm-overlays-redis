@@ -1,0 +1,24 @@
+---
+formatter: "markdown"
+
+settings:
+  anchor: false
+  lockfile: false
+
+output:
+  file: "README.md"
+
+sections:
+  hide: [requirements]
+
+content: |-
+  ## Requirements
+  ```hcl
+  {{ include "../../examples/complete/one_module/main.tf" }}
+  ```
+  {{ .Providers }}
+  {{ .Modules }}
+  {{ .Resources }}
+  {{ .Inputs }}
+  {{ .Outputs }}
+...
