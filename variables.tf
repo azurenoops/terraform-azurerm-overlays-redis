@@ -61,7 +61,7 @@ variable "use_location_short_name" {
 #####################################
 
 variable "enable_private_endpoint" {
-  description = "Manages a Private Endpoint to Azure database for Redis"
+  description = "Manages a Private Endpoint to Azure Container Registry. Default is false."
   default     = false
 }
 
@@ -70,13 +70,23 @@ variable "existing_private_dns_zone" {
   default     = null
 }
 
-variable "existing_subnet_id" {
-  description = "ID of the existing subnet for the private endpoint"
+variable "private_subnet_address_prefix" {
+  description = "The name of the subnet for private endpoints"
   default     = null
 }
 
 variable "virtual_network_name" {
   description = "Name of the virtual network for the private endpoint"
+  default     = null
+}
+
+variable "existing_vnet_id" {
+  description = "ID of the existing virtual network for the private endpoint"
+  default     = null
+}
+
+variable "existing_subnet_id" {
+  description = "The resource id of existing subnet"
   default     = null
 }
 
