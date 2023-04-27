@@ -38,7 +38,7 @@ resource "azurerm_redis_cache" "redis" {
   capacity            = var.capacity
 
   private_static_ip_address = var.private_static_ip_address
-  subnet_id                 = var.existing_subnet_id
+  subnet_id                 = data.azurerm_subnet.existing_snet.0.id
 
   redis_version = var.redis_version
   zones         = var.zones

@@ -44,22 +44,14 @@ variable "tags" {
 # RG Configuration   ##
 #######################
 
-variable "create_redis_resource_group" {
-  description = "Controls if the resource group should be created. If set to false, the resource group name must be provided. Default is true."
-  type        = bool
-  default     = true
-}
-
-variable "use_location_short_name" {
-  description = "Use short location name for resources naming (ie eastus -> eus). Default is true. If set to false, the full cli location name will be used. if custom naming is set, this variable will be ignored."
-  type        = bool
-  default     = true
+variable "existing_resource_group_name" { # This is used for the redis resource group
+  description = "Name of the existing resource group"
+  default     = null
 }
 
 #####################################
 # Private Endpoint Configuration   ##
 #####################################
-
 variable "enable_private_endpoint" {
   description = "Manages a Private Endpoint to Azure Container Registry. Default is false."
   default     = false
@@ -85,11 +77,11 @@ variable "existing_vnet_id" {
   default     = null
 }
 
-variable "existing_subnet_id" {
-  description = "The resource id of existing subnet"
+variable "existing_subnet_name" { # This is used for the private endpoint
+  description = "The name of the existing subnet"
   default     = null
+  
 }
-
 ################################
 # Redis Cache Configuration   ##
 ################################
