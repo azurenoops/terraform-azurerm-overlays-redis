@@ -72,11 +72,6 @@ variable "virtual_network_name" {
   default     = null
 }
 
-variable "existing_vnet_id" {
-  description = "ID of the existing virtual network for the private endpoint"
-  default     = null
-}
-
 variable "existing_subnet_name" { # This is used for the private endpoint
   description = "The name of the existing subnet"
   default     = null
@@ -148,6 +143,11 @@ variable "private_static_ip_address" {
   default     = null
 }
 
+variable "allow_auto_registration" {
+  description = "Allow auto registration of the network hosts to private DNS."
+  type        = bool
+  default     = false
+}
 variable "data_persistence_enabled" {
   description = "\"true\" to enable data persistence."
   type        = bool
