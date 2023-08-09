@@ -1,85 +1,14 @@
 # Copyright (c) Microsoft Corporation.
 # Licensed under the MIT License.
 
-###########################
-# Global Configuration   ##
-###########################
-
-variable "environment" {
-  description = "The Terraform backend environment e.g. public or usgovernment"
-  type        = string
-  default     = null
-}
-
-variable "location" {
-  description = "The location/region to keep all your network resources. To get the list of all locations with table format from azure cli, run 'az account list-locations -o table'"
-  type        = string
-}
-
-variable "org_name" {
-  description = "A name for the organization. It defaults to anoa."
-  type        = string
-  default     = "anoa"
-}
-
-variable "workload_name" {
-  description = "A name for the workload. It defaults to hub-core."
-  type        = string
-  default     = "hub-core"
-}
-
-variable "deploy_environment" {
-  description = "The environment to deploy. It defaults to dev."
-  type        = string
-  default     = "dev"
-}
-
-variable "tags" {
-  description = "A map of tags to add to all resources"
-  default     = {}
-  type        = map(string)
-}
-
-#######################
-# RG Configuration   ##
-#######################
-
-variable "existing_resource_group_name" { # This is used for the redis resource group
-  description = "Name of the existing resource group"
-  default     = null
-}
-
-#####################################
-# Private Endpoint Configuration   ##
-#####################################
-variable "enable_private_endpoint" {
-  description = "Manages a Private Endpoint to Azure Container Registry. Default is false."
-  default     = false
-}
-
-variable "existing_private_dns_zone" {
-  description = "Name of the existing private DNS zone"
-  default     = null
-}
-
-variable "private_subnet_address_prefix" {
-  description = "The name of the subnet for private endpoints"
-  default     = null
-}
-
-variable "virtual_network_name" {
-  description = "Name of the virtual network for the private endpoint"
-  default     = null
-}
-
-variable "existing_subnet_name" { # This is used for the private endpoint
-  description = "The name of the existing subnet"
-  default     = null
-  
-}
 ################################
 # Redis Cache Configuration   ##
 ################################
+
+variable "existing_subnet_name" {
+  description = "Name of the existing subnet for the redis cache."
+  default     = null
+}
 
 variable "capacity" {
   description = "Redis size: (Basic/Standard: 1,2,3,4,5,6) (Premium: 1,2,3,4)  https://docs.microsoft.com/fr-fr/azure/redis-cache/cache-how-to-premium-clustering"

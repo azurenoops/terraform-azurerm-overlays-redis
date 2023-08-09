@@ -23,5 +23,5 @@ locals {
 
   redis_config = merge(local.default_redis_config, var.redis_configuration)
 
-  is_subnet_injected = var.existing_subnet_name != null || var.enable_private_endpoint
+  is_subnet_injected = var.existing_private_subnet_name != null || var.enable_private_endpoint
 }
