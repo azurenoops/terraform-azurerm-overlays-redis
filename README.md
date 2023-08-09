@@ -1,8 +1,8 @@
-# Azure NoOps Accelerator Redis Cache Overlay Module
+# Azure NoOps Redis Cache Overlay Module
 
 [![Changelog](https://img.shields.io/badge/changelog-release-green.svg)](CHANGELOG.md) [![MIT License](https://img.shields.io/badge/license-MIT-orange.svg)](LICENSE) [![TF Registry](https://img.shields.io/badge/terraform-registry-blue.svg)](https://registry.terraform.io/modules/azurenoops/overlays-redis/azurerm/)
 
-This Overlay terraform module can create a Redis Cache and manage related parameters (Threat protection, Redis Cache FW Rules, Private Endpoints, etc.) to be used in a [SCCA compliant Network](https://registry.terraform.io/modules/azurenoops/overlays-hubspoke/azurerm/latest).
+This Overlay terraform module can create a Redis Cache and manage related parameters (Threat protection, Redis Cache FW Rules, Private Endpoints, etc.) to be used in a [SCCA compliant Network](https://registry.terraform.io/modules/azurenoops/overlays-management-hub/azurerm/latest).
 
 ## SCCA Compliance
 
@@ -16,9 +16,21 @@ If you want to contribute to this repository, feel free to to contribute to our 
 
 More details are available in the [CONTRIBUTING.md](./CONTRIBUTING.md#pull-request-process) file.
 
-## Usage
+## Resources Used
+
+* [Redis Cache](https://www.terraform.io/docs/providers/azurerm/r/redis_cache.html)
+* [Private Endpoints](https://www.terraform.io/docs/providers/azurerm/r/private_endpoint.html)
+* [Private DNS zone for `privatelink` A records](https://www.terraform.io/docs/providers/azurerm/r/private_dns_zone.html)
+* [Azure Reource Locks](https://www.terraform.io/docs/providers/azurerm/r/management_lock.html)
+
+## Overlay Module Usage
 
 ```hcl
+# Azurerm Provider configuration
+provider "azurerm" {
+  features {}
+}
+
 resource "random_id" "prefix" {
   byte_length = 8
 }
