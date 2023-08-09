@@ -42,10 +42,7 @@ module "mod_redis" {
   # To use existing private DNS zone specify `existing_private_dns_zone` with valid zone name
   # Private endpoints doesn't work If not using `existing_subnet_id` to create redis inside a specified VNet.
   enable_private_endpoint = false
-  # existing_subnet_id      = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/rg-anoa-dev-redis/providers/Microsoft.Network/virtualNetworks/vnet-anoa-dev-redis/subnets/snet-anoa-dev-redis"
-  # virtual_network_name    = "vnet-anoa-dev-redis"
-  #  existing_private_dns_zone     = "demo.example.com"
 
   # Tags for Azure Resources
-  add_tags = {}
+  add_tags = local.tags # Tags to be applied to all resources
 }

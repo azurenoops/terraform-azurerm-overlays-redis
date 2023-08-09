@@ -14,7 +14,7 @@ sections:
 content: |-
   ## Requirements
   ```hcl
-  {{ include "../../examples/complete/one_module/main.tf" }}
+  {{ include "../../examples/basic/main.tf" }}
   ```
   {{ .Providers }}
   {{ .Modules }}

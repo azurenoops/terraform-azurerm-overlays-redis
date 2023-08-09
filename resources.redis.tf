@@ -10,7 +10,7 @@ resource "azurerm_storage_account" "redis_storage" {
 
   name                = local.storage_name
   resource_group_name = local.resource_group_name
-  location            = module.mod_azure_region_lookup.location_cli
+  location            = local.location
 
   account_tier             = var.data_persistence_storage_account_tier
   account_replication_type = var.data_persistence_storage_account_replication
@@ -26,7 +26,7 @@ resource "azurerm_storage_account" "redis_storage" {
 #------------------------------------------------------------
 resource "azurerm_redis_cache" "redis" {
   name                = local.redis_name
-  location            = module.mod_azure_region_lookup.location_cli
+  location            = local.location
   resource_group_name = local.resource_group_name
 
   family   = lookup(local.redis_family_map, var.sku_name)
@@ -38,7 +38,7 @@ resource "azurerm_redis_cache" "redis" {
   capacity            = var.capacity
 
   private_static_ip_address = var.private_static_ip_address
-  subnet_id                 = data.azurerm_subnet.existing_snet.0.id
+  subnet_id                 = var.existing_subnet_name != null ? element(data.azurerm_subnet.existing_snet[*].id, 0) : null
 
   redis_version = var.redis_version
   zones         = var.zones
