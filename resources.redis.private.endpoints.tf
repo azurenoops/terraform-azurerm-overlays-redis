@@ -72,12 +72,3 @@ resource "azurerm_private_dns_a_record" "a_rec" {
   ttl                 = 300
   records             = [data.azurerm_private_endpoint_connection.pip.0.private_service_connection.0.private_ip_address]
 }
-
-resource "azurerm_private_dns_a_record" "a_rec_redis" {
-  count               = var.existing_subnet_name != null || var.enable_private_endpoint ? 1 : 0
-  name                = lower(azurerm_redis_cache.redis.name)
-  zone_name           = azurerm_private_dns_zone.dns_zone.0.name
-  resource_group_name = local.resource_group_name
-  ttl                 = 300
-  records             = [data.azurerm_redis_cache.redis.private_static_ip_address]
-}
